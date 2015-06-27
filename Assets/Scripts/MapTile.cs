@@ -17,11 +17,13 @@ public class MapTile : MonoBehaviour {
 	float fireSpreadTimer = 0;
 	float oozeSpreadRate = 0.5f;
 	float oozeSpreadTimer = 0;
+
+	public float fireFuel = 1;
+	public int oozeLife = 1;
 	Map m;
 
 	// Use this for initialization
 	void Start () {
-		//onFire = false;
 		GameObject g = GameObject.FindWithTag("Map");
 		m = g.GetComponentInChildren<Map>();
 	}
@@ -43,7 +45,10 @@ public class MapTile : MonoBehaviour {
 					}
 					m.SetThingsOnFire (x + x1, y + y1);
 				}
-				if (Random.Range (0f, 1f) > 0.9) {
+				//Decrease fuel
+				fireFuel -= Time.deltaTime;
+				if (fireFuel <= 0) {
+					print (fireFuel);
 					onFire = false;
 					isBurned = true;
 					SetBurned(x, y);
@@ -99,8 +104,27 @@ public class MapTile : MonoBehaviour {
 				newPrefab.GetComponent<MapTile> ().setFire ();
 				newPrefab.GetComponent<MapTile> ().x = x;
 				newPrefab.GetComponent<MapTile> ().y = y;
+				newPrefab.GetComponent<MapTile>().fireFuel = fireFuel;
 				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
 				Destroy (gameObject);
+			}
+		}
+		//Burn ooze
+		if (isOozed) {
+			print ("burrn ooze");
+			oozeLife -= 1;
+			if (oozeLife <= 0) {
+				if (burningPrefab) {
+					GameObject newPrefab = Instantiate (burningPrefab);
+					newPrefab.transform.position = transform.position;
+					newPrefab.transform.SetParent (transform.parent.transform);
+					newPrefab.GetComponent<MapTile> ().setFire ();
+					newPrefab.GetComponent<MapTile> ().x = x;
+					newPrefab.GetComponent<MapTile> ().y = y;
+					newPrefab.GetComponent<MapTile>().fireFuel = fireFuel;
+					newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
+					Destroy (gameObject);
+				}
 			}
 		}
 	}
