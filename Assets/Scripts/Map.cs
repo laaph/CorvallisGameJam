@@ -7,8 +7,11 @@ public class Map : MonoBehaviour {
 
 	public Transform street;
 	public Transform burnedThing;
-	public Transform house;
+	public Transform skyScraper;
+	public Transform smallHouse;
 	public Transform park;
+	public Transform barn;
+	public Transform rowHouses;
 	
 	public Material burnedMat;
 	public Material fireMat;
@@ -18,8 +21,11 @@ public class Map : MonoBehaviour {
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	// 0 = street
 	// 1 = burned thing
-	// 2 = house
+	// 2 = smallhouses
 	// 3 = park
+	// 4 = skyscraper
+	// 5 = barn
+	// 6 = rowhouses
 	
 	
 	// Use this for initialization
@@ -31,12 +37,32 @@ public class Map : MonoBehaviour {
 					map[i, j] = 0;
 					mapObjects[i,j] = Instantiate(street);
 				} else {
-					if(Random.Range(0f, 1f) > 0.7f) {
-						map[i, j] = 2;
-						mapObjects[i, j] = Instantiate(house);
-					} else {
-						map[i, j] = 3;
-						mapObjects[i, j] = Instantiate(park);
+					switch(Random.Range(0, 10)) {
+						case 5:
+						case 6:
+						case 9:
+						case 0:
+							map[i, j] = 2;
+							mapObjects[i, j] = Instantiate(smallHouse);
+							break;
+						case 1:
+							map[i, j] = 3;
+							mapObjects[i, j] = Instantiate(park);
+							break;
+						case 2:
+							map[i, j] = 4;
+							mapObjects[i, j] = Instantiate(skyScraper);
+							break;
+						case 3:
+							map[i, j] = 5;
+							mapObjects[i, j] = Instantiate(barn);
+							break;
+						case 7:
+						case 8:
+						case 4:
+							map[i, j] = 6;
+							mapObjects[i, j] = Instantiate(rowHouses);
+						break;
 					}
 				}
 				mapObjects[i, j].SetParent(this.transform);
