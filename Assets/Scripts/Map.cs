@@ -41,7 +41,6 @@ public class Map : MonoBehaviour {
 				}
 				mapObjects[i, j].SetParent(this.transform);
 				mapObjects[i, j].position = new Vector3(i*100, 0, j*100);
-				//mapObjects[i, j].gameObject.AddComponent<SetFire>();
 				MapTile tile = mapObjects[i,j].GetComponent<MapTile>();
 				tile.x = i; tile.y = j;
 			}
