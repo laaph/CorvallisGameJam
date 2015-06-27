@@ -25,11 +25,6 @@ public class SetFire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(clickable && Input.GetMouseButtonDown(0)) {
-			onFire = true;
-			r.material = m.getFireMat();
-		}
-
 		//Spread fire every interval of time
 		spreadTimer += Time.deltaTime;
 		if (spreadTimer > spreadRate) {
@@ -58,6 +53,7 @@ public class SetFire : MonoBehaviour {
 	}	
 	public void setFire() {
 			onFire = true;
+			r.material = m.getFireMat();
 	}
 	
 	void OnMouseEnter() {
