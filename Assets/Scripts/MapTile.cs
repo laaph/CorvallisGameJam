@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SetFire : MonoBehaviour {
+public class MapTile : MonoBehaviour {
 
 	[SerializeField] Material fireMat;
 	public Material burnedMat;
@@ -9,7 +9,6 @@ public class SetFire : MonoBehaviour {
 	public GameObject burnedPrefab;
 
 	public int x,y;
-	bool clickable;
 	bool onFire;
 	bool isBurned;
 	float spreadRate = 0.5f;
@@ -71,9 +70,9 @@ public class SetFire : MonoBehaviour {
 				GameObject newPrefab = Instantiate (burningPrefab);
 				newPrefab.transform.position = transform.position;
 				newPrefab.transform.SetParent (transform.parent.transform);
-				newPrefab.GetComponent<SetFire> ().setFire ();
-				newPrefab.GetComponent<SetFire> ().x = x;
-				newPrefab.GetComponent<SetFire> ().y = y;
+				newPrefab.GetComponent<MapTile> ().setFire ();
+				newPrefab.GetComponent<MapTile> ().x = x;
+				newPrefab.GetComponent<MapTile> ().y = y;
 				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
 				Destroy (gameObject);
 			}
@@ -85,20 +84,11 @@ public class SetFire : MonoBehaviour {
 			GameObject newPrefab = Instantiate(burnedPrefab);
 			newPrefab.transform.position = transform.position;
 			newPrefab.transform.SetParent(transform.parent.transform);
-			newPrefab.GetComponent<SetFire>().setBurned();
-			newPrefab.GetComponent<SetFire>().x = x;
-			newPrefab.GetComponent<SetFire>().y = y;
+			newPrefab.GetComponent<MapTile>().setBurned();
+			newPrefab.GetComponent<MapTile>().x = x;
+			newPrefab.GetComponent<MapTile>().y = y;
 			newPrefab.transform.parent.gameObject.GetComponent<Map>().SetGridObject(x, y, newPrefab.transform);
 			Destroy(gameObject);
 		}
-	}
-	
-	void OnMouseEnter() {
-		clickable = true;
-	//	Debug.Log("Clickable true at x " + x + " y " + y);
-	}
-	void OnMouseExit() {
-		clickable = false;
-	//	Debug.Log("No longer clickable at x " + x + "y " + y);
 	}
 }
