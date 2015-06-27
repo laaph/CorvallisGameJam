@@ -9,6 +9,8 @@ public class SetFire : MonoBehaviour {
 	public int x,y;
 	bool clickable;
 	bool onFire;
+	float spreadRate = 1;
+	float spreadTimer = 0;
 	Renderer r;
 	Map m;
 	
@@ -27,22 +29,31 @@ public class SetFire : MonoBehaviour {
 			onFire = true;
 			r.material = m.getFireMat();
 		}
-		if(onFire) {
-			if(Random.Range(0f, 1f) > 0.2 ) {
-				// Set neighbors on fire
-				// Pick a direction
-				int x1 = 0; int y1 = 0;
-				while(x1 == 0 && y1 == 0) {
-					x1 = Random.Range(-1, 2);
-					y1 = Random.Range(-1, 2);
+
+		//Spread fire every interval of time
+		spreadTimer += Time.deltaTime;
+		if (spreadTimer > spreadRate) {
+			if (onFire) {
+				if (Random.Range (0f, 1f) > 0.2) {
+					// Set neighbors on fire
+					// Pick a direction
+					int x1 = 0;
+					int y1 = 0;
+					while (x1 == 0 && y1 == 0) {
+						x1 = Random.Range (-1, 2);
+						y1 = Random.Range (-1, 2);
+					}
+					m.SetThingsOnFire (x + x1, y + y1);
 				}
-				m.SetThingsOnFire(x + x1, y + y1);
-			}
-			if(Random.Range(0f, 1f) > 0.9) {
-				onFire = false;
-				r.material = m.getBurnedMat();
-			}
+				if (Random.Range (0f, 1f) > 0.9) {
+					onFire = false;
+					r.material = m.getBurnedMat ();
+				}
 				
+			}
+
+			//Reset timer
+			spreadTimer = 0;
 		}
 	}	
 	public void setFire() {

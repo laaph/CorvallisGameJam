@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraControl : MonoBehaviour {
 
 	public GameObject cursor;
-	float movementSpeed = 0.05f;
+	public float movementSpeed = 0.05f;
 	float borderMargin = 50;
 
 
