@@ -158,7 +158,7 @@ GameObject:
   - 114: {fileID: 1639838761}
   m_Layer: 0
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,8 +176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   street: {fileID: 485886, guid: 190befd212f7f4d4887b7959aba7ecea, type: 2}
   burnedThing: {fileID: 0}
-  house: {fileID: 478712, guid: a241cb374091747fb9fc9e24f6db0dd1, type: 2}
+  house: {fileID: 496750, guid: 1d225d4f6a72d4b408610a060cd82680, type: 2}
   park: {fileID: 402764, guid: 2d62b8bf6e0ae42ce9917a5d9e32374e, type: 2}
+  burnedMat: {fileID: 2100000, guid: 07b07c9af5bd9441a8d42b25c3797fe9, type: 2}
+  fireMat: {fileID: 2100000, guid: 4c412e0cfca1d4c26b4de3ad7c3d3ed9, type: 2}
 --- !u!4 &1639838762
 Transform:
   m_ObjectHideFlags: 0
@@ -247,7 +249,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -269,8 +271,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1771893499}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
+  m_LocalPosition: {x: 300, y: 300, z: -300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
