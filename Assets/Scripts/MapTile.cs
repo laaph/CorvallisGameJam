@@ -18,7 +18,7 @@ public class MapTile : MonoBehaviour {
 	float oozeSpreadRate = 0.5f;
 	float oozeSpreadTimer = 0;
 	public float fireFuel = 1;
-	float oozeLife = 1;
+	public int oozeLife = 1;
 	Renderer r;
 	Map m;
 
@@ -46,7 +46,7 @@ public class MapTile : MonoBehaviour {
 					}
 					m.SetThingsOnFire (x + x1, y + y1);
 				}
-				//Burn fuel
+				//Decrease fuel
 				fireFuel -= Time.deltaTime;
 				if (fireFuel <= 0) {
 					print (fireFuel);
@@ -108,6 +108,24 @@ public class MapTile : MonoBehaviour {
 				newPrefab.GetComponent<MapTile>().fireFuel = fireFuel;
 				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
 				Destroy (gameObject);
+			}
+		}
+		//Burn ooze
+		if (isOozed) {
+			print ("burrn ooze");
+			oozeLife -= 1;
+			if (oozeLife <= 0) {
+				if (burningPrefab) {
+					GameObject newPrefab = Instantiate (burningPrefab);
+					newPrefab.transform.position = transform.position;
+					newPrefab.transform.SetParent (transform.parent.transform);
+					newPrefab.GetComponent<MapTile> ().setFire ();
+					newPrefab.GetComponent<MapTile> ().x = x;
+					newPrefab.GetComponent<MapTile> ().y = y;
+					newPrefab.GetComponent<MapTile>().fireFuel = fireFuel;
+					newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
+					Destroy (gameObject);
+				}
 			}
 		}
 	}
