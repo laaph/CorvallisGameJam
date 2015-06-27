@@ -62,6 +62,14 @@ public class Map : MonoBehaviour {
 		tile.StartBurning(x, y);
 	}
 
+	public void SetThingsOozed(int x, int y) {
+		if(x >= maxSize || y >= maxSize || x < 0 || y < 0) {
+			return;
+		}
+		MapTile tile = mapObjects[x,y].GetComponent<MapTile>() as MapTile;
+		tile.Oozify(x, y);
+	}
+
 	public void SetGridObject(int x, int y, Transform newTransform) {
 		mapObjects[x,y] = newTransform;
 	}

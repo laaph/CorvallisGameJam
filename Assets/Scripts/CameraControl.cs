@@ -46,6 +46,11 @@ public class CameraControl : MonoBehaviour {
 			MapTile s = hit.collider.gameObject.GetComponent<MapTile>();
 			s.StartBurning(s.x, s.y);
 		}
+		//Set ooze (for debug)
+		if (Input.GetMouseButtonDown (1)) {
+			MapTile s = hit.collider.gameObject.GetComponent<MapTile>();
+			s.Oozify(s.x, s.y);
+		}
 
 	}
 }
