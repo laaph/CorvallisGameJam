@@ -6,11 +6,13 @@ public class SetFire : MonoBehaviour {
 	public Material fireMat;
 	public Material burnedMat;
 	public GameObject burningPrefab;
+	public GameObject burnedPrefab;
 
 	public int x,y;
 	bool clickable;
 	bool onFire;
-	float spreadRate = 0.1f;
+	bool isBurned;
+	float spreadRate = 0.5f;
 	float spreadTimer = 0;
 	Renderer r;
 	Map m;
@@ -40,11 +42,11 @@ public class SetFire : MonoBehaviour {
 						y1 = Random.Range (-1, 2);
 					}
 					m.SetThingsOnFire (x + x1, y + y1);
-					print ("set things on fire");
 				}
 				if (Random.Range (0f, 1f) > 0.9) {
 					onFire = false;
-					print ("burn");
+					isBurned = true;
+					SetBurned(x, y);
 					//r.material = m.getBurnedMat ();
 				}
 				
@@ -58,13 +60,32 @@ public class SetFire : MonoBehaviour {
 		onFire = true;
 	}
 
+	public void setBurned() {
+		isBurned = true;
+		onFire = false;
+	}
+
 	public void StartBurning(int x, int y) {
-		if (burningPrefab) {
-			print ("started burning");
-			GameObject newPrefab = Instantiate(burningPrefab);
+		if (!isBurned) {
+			if (burningPrefab) {
+				GameObject newPrefab = Instantiate (burningPrefab);
+				newPrefab.transform.position = transform.position;
+				newPrefab.transform.SetParent (transform.parent.transform);
+				newPrefab.GetComponent<SetFire> ().setFire ();
+				newPrefab.GetComponent<SetFire> ().x = x;
+				newPrefab.GetComponent<SetFire> ().y = y;
+				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
+				Destroy (gameObject);
+			}
+		}
+	}
+
+	public void SetBurned(int x, int y) {
+		if (burnedPrefab) {
+			GameObject newPrefab = Instantiate(burnedPrefab);
 			newPrefab.transform.position = transform.position;
 			newPrefab.transform.SetParent(transform.parent.transform);
-			newPrefab.GetComponent<SetFire>().setFire();
+			newPrefab.GetComponent<SetFire>().setBurned();
 			newPrefab.GetComponent<SetFire>().x = x;
 			newPrefab.GetComponent<SetFire>().y = y;
 			newPrefab.transform.parent.gameObject.GetComponent<Map>().SetGridObject(x, y, newPrefab.transform);

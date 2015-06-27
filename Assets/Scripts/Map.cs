@@ -13,7 +13,7 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static int maxSize = 5;
+	static int maxSize = 50;
 	public int[,] 			map 		= new int[maxSize, maxSize];
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	// 0 = street
