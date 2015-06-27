@@ -43,7 +43,8 @@ public class CameraControl : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButtonDown (0)) {
-			hit.collider.gameObject.GetComponent<SetFire>().setFire();
+			SetFire s = hit.collider.gameObject.GetComponent<SetFire>();
+			s.StartBurning(s.x, s.y);
 		}
 
 	}

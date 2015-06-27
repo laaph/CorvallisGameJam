@@ -41,7 +41,7 @@ public class Map : MonoBehaviour {
 				}
 				mapObjects[i, j].SetParent(this.transform);
 				mapObjects[i, j].position = new Vector3(i*100, 0, j*100);
-				mapObjects[i, j].gameObject.AddComponent<SetFire>();
+				//mapObjects[i, j].gameObject.AddComponent<SetFire>();
 				SetFire s = mapObjects[i,j].GetComponent<SetFire>();
 				s.x = i; s.y = j;
 			}
@@ -59,8 +59,14 @@ public class Map : MonoBehaviour {
 			return;
 		}
 		SetFire s = mapObjects[x,y].GetComponent<SetFire>() as SetFire;
-		s.setFire();
+		//s.setFire();
+		s.StartBurning(x, y);
 	}
+
+	public void SetGridObject(int x, int y, Transform newTransform) {
+		mapObjects[x,y] = newTransform;
+	}
+
 	public Material getBurnedMat() {
 		return burnedMat;
 	}

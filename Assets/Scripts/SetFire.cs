@@ -5,11 +5,12 @@ public class SetFire : MonoBehaviour {
 
 	public Material fireMat;
 	public Material burnedMat;
+	public GameObject burningPrefab;
 
 	public int x,y;
 	bool clickable;
 	bool onFire;
-	float spreadRate = 1;
+	float spreadRate = 0.1f;
 	float spreadTimer = 0;
 	Renderer r;
 	Map m;
@@ -17,7 +18,7 @@ public class SetFire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		onFire = false;
+		//onFire = false;
 		r = GetComponent<Renderer>();
 		GameObject g = GameObject.FindWithTag("Map");
 		m = g.GetComponentInChildren<Map>();
@@ -39,10 +40,12 @@ public class SetFire : MonoBehaviour {
 						y1 = Random.Range (-1, 2);
 					}
 					m.SetThingsOnFire (x + x1, y + y1);
+					print ("set things on fire");
 				}
 				if (Random.Range (0f, 1f) > 0.9) {
 					onFire = false;
-					r.material = m.getBurnedMat ();
+					print ("burn");
+					//r.material = m.getBurnedMat ();
 				}
 				
 			}
@@ -52,8 +55,21 @@ public class SetFire : MonoBehaviour {
 		}
 	}	
 	public void setFire() {
-			onFire = true;
-			r.material = m.getFireMat();
+		onFire = true;
+	}
+
+	public void StartBurning(int x, int y) {
+		if (burningPrefab) {
+			print ("started burning");
+			GameObject newPrefab = Instantiate(burningPrefab);
+			newPrefab.transform.position = transform.position;
+			newPrefab.transform.SetParent(transform.parent.transform);
+			newPrefab.GetComponent<SetFire>().setFire();
+			newPrefab.GetComponent<SetFire>().x = x;
+			newPrefab.GetComponent<SetFire>().y = y;
+			newPrefab.transform.parent.gameObject.GetComponent<Map>().SetGridObject(x, y, newPrefab.transform);
+			Destroy(gameObject);
+		}
 	}
 	
 	void OnMouseEnter() {
