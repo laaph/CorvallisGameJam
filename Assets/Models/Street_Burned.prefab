@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11431204}
   m_Layer: 0
   m_Name: Street_Burned
-  m_TagString: Untagged
+  m_TagString: Burned
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,10 +87,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMat: {fileID: 0}
   burnedMat: {fileID: 0}
+  oozePrefab: {fileID: 0}
+  currentPrefab: {fileID: 0}
+  originalPrefab: {fileID: 0}
   burningPrefab: {fileID: 146700, guid: 230daad2b48bc574fb6b906c1288acf4, type: 2}
   burnedPrefab: {fileID: 0}
   x: 0
   y: 0
+  fireFuel: 1
+  oozeLife: 1
+  type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

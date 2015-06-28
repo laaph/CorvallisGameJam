@@ -5,12 +5,12 @@ public class MapTile : MonoBehaviour {
 
 	[SerializeField] Material fireMat;
 	public Material burnedMat;
-	public GameObject oozePrefab;
 
 	public Transform currentPrefab;
 	public Transform originalPrefab;
 	public Transform burningPrefab;	
 	public Transform burnedPrefab;
+	public Transform oozePrefab;
  
 	public int x,y;
 	bool onFire;
@@ -116,55 +116,43 @@ public class MapTile : MonoBehaviour {
 	//Swap to burning prefab
 	public void StartBurning(int x, int y) {
 		if (!isBurned && !isOozed) {
-		//Debug.Log("burnedPrefab is " + burningPrefab.ToString());
-			if (burningPrefab) {
-				Transform newPrefab = Instantiate (burningPrefab);
-				Destroy (currentPrefab.gameObject);
-				currentPrefab = newPrefab;
-				currentPrefab.SetParent(this.transform);
-				currentPrefab.transform.position = transform.position;
-				//Debug.Log("currentPrefab is " + currentPrefab.ToString());
-				onFire = true;
-			}
+			currentPrefab.gameObject.SetActive(false);
+			burnedPrefab.gameObject.SetActive(true);
+			onFire = true;
 		}
 		//Burn ooze
 		if (isOozed) {
-			//print ("burn ooze");
 			oozeLife -= 1;
 			if (oozeLife <= 0) {
-				if (burningPrefab) {
-					GameObject newPrefab = Instantiate (burningPrefab.gameObject);
-					newPrefab.transform.position = transform.position;
-					newPrefab.transform.SetParent (transform.parent.transform);
-					newPrefab.GetComponent<MapTile> ().setFire ();
-					newPrefab.GetComponent<MapTile> ().x = x;
-					newPrefab.GetComponent<MapTile> ().y = y;
-					newPrefab.GetComponent<MapTile>().fireFuel = fireFuel;
-					newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
-					Destroy (gameObject);
-				}
+				currentPrefab.gameObject.SetActive(false);
+				burnedPrefab.gameObject.SetActive(true);
+				oozePrefab.gameObject.SetActive(false);
+				onFire = true;
 			}
 		}
 	}
 
 	//Swap to burned prefab
 	public void SetBurned(int x, int y) {
-			if (burnedPrefab) {
-			Transform t = Instantiate (burnedPrefab);
-				GameObject newPrefab = t.gameObject;
-				newPrefab.transform.position = transform.position;
-				newPrefab.transform.SetParent (transform.parent.transform);
-				newPrefab.GetComponent<MapTile> ().setBurned ();
-				newPrefab.GetComponent<MapTile> ().x = x;
-				newPrefab.GetComponent<MapTile> ().y = y;
-				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
-				Destroy (gameObject);
-			}
+//			if (burnedPrefab) {
+//			Transform t = Instantiate (burnedPrefab);
+//				GameObject newPrefab = t.gameObject;
+//				newPrefab.transform.position = transform.position;
+//				newPrefab.transform.SetParent (transform.parent.transform);
+//				newPrefab.GetComponent<MapTile> ().setBurned ();
+//				newPrefab.GetComponent<MapTile> ().x = x;
+//				newPrefab.GetComponent<MapTile> ().y = y;
+//				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
+//				Destroy (gameObject);
+//			}
+		onFire = false;
 	}
 
 	//Swap to ooze prefab
 	public void Oozify(int x, int y) {
 		if (!onFire && !isBurned) {
+			currentPrefab.gameObject.SetActive(false);
+			oozePrefab.gameObject.SetActive(true);
 			GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10);
 			isOozed = true;
 		}

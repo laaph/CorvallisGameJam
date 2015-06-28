@@ -21,21 +21,27 @@ public class Map : MonoBehaviour {
 
 	public Transform street;
 	public Transform burnedStreet;
+	public Transform oozeStreet;
 	
 	public Transform skyScraper;
 	public Transform burnedSkyScraper;
+	public Transform oozeSkyScraper;
 	
 	public Transform smallHouse;
 	public Transform burnedSmallHouse;
+	public Transform oozeSmallHouse;
 	
 	public Transform park;
 	public Transform burnedPark;
+	public Transform oozePark;
 	
 	public Transform barn;
 	public Transform burnedBarn;
+	public Transform oozeBarn;
 	
 	public Transform rowHouses;
 	public Transform burnedRowHouses;
+	public Transform oozeRowHouses;
 	
 	public Material burnedMat;
 	public Material fireMat;
@@ -63,6 +69,7 @@ public class Map : MonoBehaviour {
 				
 				Transform tileObject = null;
 				Transform burnedObject = null;
+				Transform oozeObject = null;
 				
 				bool road = false;
 									
@@ -70,6 +77,7 @@ public class Map : MonoBehaviour {
 					s.type = 0;
 					tileObject = street; 
 					burnedObject = burnedStreet;
+					oozeObject = oozeStreet;
 					s.fireFuel = streetFuel;
 					road = true;
 					
@@ -88,6 +96,7 @@ public class Map : MonoBehaviour {
 					s.type = 0;
 					tileObject = street; 
 					burnedObject = burnedStreet;
+					oozeObject = oozeStreet;
 					s.fireFuel = streetFuel;
 					nsDir = true;
 					road = true;
@@ -97,6 +106,7 @@ public class Map : MonoBehaviour {
 					s.type = 0;
 					tileObject = street;
 					burnedObject = burnedStreet;
+					oozeObject = oozeStreet;
 					s.fireFuel = streetFuel;
 					ewDir = true;
 					road = true;
@@ -112,24 +122,28 @@ public class Map : MonoBehaviour {
 							s.type = 2;
 							tileObject = smallHouse; //Instantiate(smallHouse);
 							burnedObject = burnedSmallHouse;
+							oozeObject = oozeSmallHouse;
 							s.fireFuel = smallHouseFuel;
 							break;
 						case 1:
 							s.type = 3;
 							tileObject = park; //Instantiate(park);
 							burnedObject = burnedPark;
+							oozeObject = oozePark;
 							s.fireFuel = parkFuel;
 							break;
 						case 2:
 							s.type = 4;
 							tileObject = skyScraper;//Instantiate(skyScraper);
 							burnedObject = burnedSkyScraper;
+							oozeObject = oozeSkyScraper;
 							s.fireFuel = skyScraperFuel;
 							break;
 						case 3:
 							s.type = 5;
 							tileObject = barn; //Instantiate(barn);
 							burnedObject = burnedBarn;
+							oozeObject = oozeBarn;
 							s.fireFuel = barnFuel;
 							break;
 						case 7:
@@ -138,13 +152,23 @@ public class Map : MonoBehaviour {
 							s.type = 6;
 							tileObject = rowHouses; //Instantiate(rowHouses);
 							burnedObject = burnedRowHouses;
+							oozeObject = oozeRowHouses;
 							s.fireFuel = rowHousesFuel;
 						break;
 					}
 				}
-				Transform t = Instantiate(tileObject);
 				mapObjects[i, j].SetParent(this.transform);
+				Transform t = Instantiate(tileObject);
 				t.SetParent(mapObjects[i,j]);
+				Transform b = Instantiate(burnedObject);
+				b.SetParent(mapObjects[i,j]);
+				b.transform.position = t.transform.position;
+				b.gameObject.SetActive(false);
+				Transform o = Instantiate(oozeObject);
+				o.SetParent(mapObjects[i,j]);
+				o.transform.position = t.transform.position;
+				o.gameObject.SetActive(false);
+
 				if(nsDir) { 
 					Renderer r = t.GetComponent<Renderer>();
 					r.sharedMaterial = roadNS;
@@ -157,7 +181,8 @@ public class Map : MonoBehaviour {
 				s.x = i; s.y = j;
 				s.currentPrefab  = t;
 				s.originalPrefab = tileObject;
-				s.burnedPrefab   = burnedObject;
+				s.burnedPrefab   = b;
+				s.oozePrefab 	 = o;
 				s.burningPrefab  = tileObject;
 			}
 		}
