@@ -26,6 +26,7 @@ public class Map : MonoBehaviour {
 	public Material fireMat;
 
 	static int maxSize = 100 ;
+
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
 	// Use this for initialization
@@ -91,6 +92,33 @@ public class Map : MonoBehaviour {
 	
 	}
 	
+	
+	public float randomgaussian(float mean, float stdDev)
+	{
+		//generates a random number within a gaussian distribution
+		Random rand = new Random ();
+		
+		float u1 = Random.Range (0f, 1f);
+		float u2 = Random.Range (0f, 1f);
+		float randStdNormal = Mathf.Sqrt(-2 * Mathf.Log(u1))* Mathf.Sin(2* 
+		                                                                Mathf.PI* u2);
+		return mean + stdDev * randStdNormal;
+	}
+	public void Explode(int i, int j, int fragments, float radius)
+	{
+		float angle = Random.Range(0f,1f)*2*Mathf.PI;
+		float length = randomgaussian(1, radius);
+		Vector2 vec = new Vector2( length * Mathf.Sin(angle), length * Mathf.Cos(angle) );
+		//double[] vec = StarMath.multiply(length,unitvec);
+		vec = new Vector2((float)i,(float)j);
+		//vec = StarMath.add(new double[]{(double)i,(double)j},vec);
+		int i2 = (int)Mathf.Round(vec[0]);
+		int j2 = (int)Mathf.Round(vec[1]);
+		if (((i2 >= 0) && (i2 < maxSize)) && ((j2 >= 0) && (j2 < maxSize)))
+		{
+			SetThingsOnFire(i2,j2);
+		}
+	}
 	public void SetThingsOnFire(int x, int y) {
 		if(x >= maxSize || y >= maxSize || x < 0 || y < 0) {
 			return;
