@@ -43,17 +43,17 @@ public class Populate : MonoBehaviour {
                     child.GetComponent<Renderer>().enabled = false;
                 }
             }
-            if (child.CompareTag("Fire"))
-            {
-                if (child.GetComponent<Fire>().FireID < amount)
-                {
-                    child.GetComponent<SpriteRenderer>().enabled = true;
-                }
-                else
-                {
-                    child.GetComponent<SpriteRenderer>().enabled = false;
-                }
-            }
+//            if (child.CompareTag("Fire"))
+//            {
+//                if (child.GetComponent<Fire>().FireID < amount)
+//                {
+//                    child.GetComponent<SpriteRenderer>().enabled = true;
+//                }
+//                else
+//                {
+//                    child.GetComponent<SpriteRenderer>().enabled = false;
+//                }
+//            }
         }
     }
 
@@ -97,13 +97,14 @@ public class Populate : MonoBehaviour {
                             currentInstance.GetComponent<Goo>().ProgressionNumber = currentProgression;
                             currentProgression += 1;
                         }
-
+				
                         if (prefab.CompareTag("Fire"))
                         {
+		
                             GameObject currentInstance;
                             currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
                             currentInstance.transform.parent = map.mapObjects[xTile, yTile];
-                            //currentInstance.GetComponent<SpriteRenderer>().enabled = false;
+                            currentInstance.GetComponent<SpriteRenderer>().enabled = false;
                             currentInstance.GetComponent<Fire>().FireID = currentProgression;
                             currentProgression += 1;
                         }                        
