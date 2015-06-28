@@ -57,9 +57,9 @@ public class Populate : MonoBehaviour {
 
     public void spawnAll()
     {
-        for (int x = 0; x < 50; x++)
+        for (int x = 0; x < map.GetMapSize(); x++)
         {
-            for (int y = 0; y < 50; y++)
+            for (int y = 0; y < map.GetMapSize(); y++)
             {
                 spawn(x, y);
             }
@@ -91,7 +91,7 @@ public class Populate : MonoBehaviour {
                             GameObject currentInstance;
                             currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
                             currentInstance.transform.parent = map.mapObjects[xTile, yTile];
-                            //currentInstance.GetComponent<Renderer>().enabled = false;
+                            currentInstance.GetComponent<Renderer>().enabled = false;
                             currentInstance.GetComponent<Goo>().ProgressionNumber = currentProgression;
                             currentProgression += 1;
                         }

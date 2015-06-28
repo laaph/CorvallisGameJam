@@ -1,15 +1,52 @@
 fileFormatVersion: 2
-guid: 1c78bb17951d17044bb65d0e8cd87b79
-timeCreated: 1435468292
+guid: 31794a1a9eaa02e46a7c177c284b9889
+timeCreated: 1435517429
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Icosphere
+    100000: Layer:0
+    100002: Layer:bldgconcrete
+    100004: Layer:greenery
+    100006: Layer:rowhouse4
+    100008: Layer:street
+    100010: Layer:water
+    100012: Layer:windows
+    100014: Layer:wood
+    100016: //RootNode
+    400000: Layer:0
+    400002: Layer:bldgconcrete
+    400004: Layer:greenery
+    400006: Layer:rowhouse4
+    400008: Layer:street
+    400010: Layer:water
+    400012: Layer:windows
+    400014: Layer:wood
+    400016: //RootNode
+    2300000: Layer:0
+    2300002: Layer:bldgconcrete
+    2300004: Layer:greenery
+    2300006: Layer:rowhouse4
+    2300008: Layer:street
+    2300010: Layer:water
+    2300012: Layer:windows
+    2300014: Layer:wood
+    3300000: Layer:0
+    3300002: Layer:bldgconcrete
+    3300004: Layer:greenery
+    3300006: Layer:rowhouse4
+    3300008: Layer:street
+    3300010: Layer:water
+    3300012: Layer:windows
+    3300014: Layer:wood
+    4300000: Layer:street
+    4300002: Layer:bldgconcrete
+    4300004: Layer:wood
+    4300006: Layer:greenery
+    4300008: Layer:0
+    4300010: Layer:windows
+    4300012: Layer:water
+    4300014: Layer:rowhouse4
   materials:
     importMaterials: 1
     materialName: 0

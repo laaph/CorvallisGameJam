@@ -1,15 +1,48 @@
 fileFormatVersion: 2
-guid: 1c78bb17951d17044bb65d0e8cd87b79
-timeCreated: 1435468292
+guid: a45f61d2145ab1547b863614b8667697
+timeCreated: 1435512672
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Layer:barn
+    100004: Layer:greenery
+    100006: Layer:pasture
+    100008: Layer:rowhouse1
+    100010: Layer:white
+    100012: Layer:wood
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Icosphere
+    400002: Layer:barn
+    400004: Layer:greenery
+    400006: Layer:pasture
+    400008: Layer:rowhouse1
+    400010: Layer:white
+    400012: Layer:wood
+    2300000: Layer:barn
+    2300002: Layer:greenery
+    2300004: Layer:pasture
+    2300006: Layer:rowhouse1
+    2300008: Layer:white
+    2300010: Layer:wood
+    3300000: Layer:barn
+    3300002: Layer:greenery
+    3300004: Layer:pasture
+    3300006: Layer:rowhouse1
+    3300008: Layer:white
+    3300010: Layer:wood
+    4300000: Layer:pasture
+    4300002: Layer:barn
+    4300004: Layer:white
+    4300006: Layer:wood
+    4300008: Layer:rowhouse1
+    4300010: Layer:greenery
+    6400000: Layer:barn
+    6400002: Layer:greenery
+    6400004: Layer:pasture
+    6400006: Layer:rowhouse1
+    6400008: Layer:white
+    6400010: Layer:wood
   materials:
     importMaterials: 1
     materialName: 0
@@ -31,7 +64,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

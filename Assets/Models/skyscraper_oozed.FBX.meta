@@ -1,15 +1,42 @@
 fileFormatVersion: 2
-guid: 1c78bb17951d17044bb65d0e8cd87b79
-timeCreated: 1435468292
+guid: 216bdb646bbaffc4496f10244bd6f24b
+timeCreated: 1435512787
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Icosphere
+    100000: Layer:bldgconcrete
+    100002: Layer:greenery
+    100004: Layer:street
+    100006: Layer:windows
+    100008: Layer:wood
+    100010: //RootNode
+    400000: Layer:bldgconcrete
+    400002: Layer:greenery
+    400004: Layer:street
+    400006: Layer:windows
+    400008: Layer:wood
+    400010: //RootNode
+    2300000: Layer:bldgconcrete
+    2300002: Layer:greenery
+    2300004: Layer:street
+    2300006: Layer:windows
+    2300008: Layer:wood
+    3300000: Layer:bldgconcrete
+    3300002: Layer:greenery
+    3300004: Layer:street
+    3300006: Layer:windows
+    3300008: Layer:wood
+    4300000: Layer:wood
+    4300002: Layer:greenery
+    4300004: Layer:windows
+    4300006: Layer:bldgconcrete
+    4300008: Layer:street
+    6400000: Layer:bldgconcrete
+    6400002: Layer:greenery
+    6400004: Layer:street
+    6400006: Layer:windows
+    6400008: Layer:wood
   materials:
     importMaterials: 1
     materialName: 0
@@ -31,7 +58,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
