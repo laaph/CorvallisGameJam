@@ -57,6 +57,16 @@ ModelImporter:
     4300014: Layer:rowhouse2
     4300016: Layer:rowhouse1
     4300018: Layer:rowhouse3
+    6400000: Layer:0
+    6400002: Layer:bldgconcrete
+    6400004: Layer:bluegouse
+    6400006: Layer:greenery
+    6400008: Layer:rowhouse1
+    6400010: Layer:rowhouse2
+    6400012: Layer:rowhouse3
+    6400014: Layer:street
+    6400016: Layer:windows
+    6400018: Layer:wood
   materials:
     importMaterials: 1
     materialName: 0
@@ -78,7 +88,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
