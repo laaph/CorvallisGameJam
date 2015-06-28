@@ -149,7 +149,7 @@ public class MapTile : MonoBehaviour {
 
 	//Swap to burned prefab
 	public void SetBurned(int x, int y) {
-		Debug.Log("burning");
+//		Debug.Log("burning");
 			if (burnedPrefab) {
 			Transform t = Instantiate (burnedPrefab);
 				GameObject newPrefab = t.gameObject;

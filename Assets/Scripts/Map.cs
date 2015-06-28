@@ -145,6 +145,10 @@ public class Map : MonoBehaviour {
 				Transform t = Instantiate(tileObject);
 				mapObjects[i, j].SetParent(this.transform);
 				t.SetParent(mapObjects[i,j]);
+				t.gameObject.isStatic = true;
+				for(int k = 0; k < t.childCount; k++) {
+					t.GetChild(k).gameObject.isStatic = true;
+				}
 				if(nsDir) { 
 					Renderer r = t.GetComponent<Renderer>();
 					r.sharedMaterial = roadNS;
