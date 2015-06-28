@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3311482}
   - 65: {fileID: 6553574}
   - 23: {fileID: 2331556}
-  - 114: {fileID: 11426234}
   m_Layer: 0
   m_Name: Street
   m_TagString: Untagged
@@ -74,23 +73,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11426234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbea3eaa71a07704fa2f47e09b863098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireMat: {fileID: 0}
-  burnedMat: {fileID: 0}
-  burningPrefab: {fileID: 146700, guid: 230daad2b48bc574fb6b906c1288acf4, type: 2}
-  burnedPrefab: {fileID: 0}
-  x: 0
-  y: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
