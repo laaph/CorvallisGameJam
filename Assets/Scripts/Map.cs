@@ -11,6 +11,11 @@ public class Map : MonoBehaviour {
 	public float parkFuel = 0.5f;
 	public float barnFuel = 0.9f;
 	public float rowHousesFuel = 0.7f;
+	
+	
+	public Material roadNS;
+	public Material roadEW;
+	//public Material roadIntersection;  // Currently default.
 
 	public Transform emptyTileObject;
 
@@ -35,28 +40,67 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static int maxSize = 100 ;
+	static int maxSize = 20 ;
 
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
 	// Use this for initialization
 	void Start () {
 	
+		bool skipHorizRoad;
+		bool skipVertRoad;
+		skipVertRoad = false; skipHorizRoad = false;
+		
 		for(int i = 0; i < maxSize; i++) {
 			for(int j = 0; j < maxSize; j++) {
+				bool nsDir = false;
+				bool ewDir = false;
 				mapObjects[i,j] = Instantiate(emptyTileObject);
 				MapTile s = mapObjects[i,j].GetComponent<MapTile>();
 				
 				Transform tileObject = null;
 				Transform burnedObject = null;
-											
-				if(((i % 3) == 0 || (j % 3) == 0) && Random.Range(0f, 1f) < 0.9f) {
+				
+				bool road = false;
+									
+				if((i % 3) == 0 && (j % 3) == 0) {
 					s.type = 0;
-					tileObject = street; //Instantiate(street);
+					tileObject = street; 
 					burnedObject = burnedStreet;
 					s.fireFuel = streetFuel;
+					road = true;
 					
-				} else {
+					skipVertRoad = false;  skipHorizRoad = false;
+					// Cross street
+					if(Random.Range(0f, 1f) > 0.9f) {
+						skipVertRoad = true;
+					}
+					if(Random.Range(0f, 1f) > 0.9f) {
+						skipHorizRoad = true;
+					}
+					Debug.Log("x, y" + i + j + " skips " + skipVertRoad + skipHorizRoad);
+				}
+				
+				if((i % 3) == 0 && (j % 3) != 0 && !skipHorizRoad) {
+					s.type = 0;
+					tileObject = street; 
+					burnedObject = burnedStreet;
+					s.fireFuel = streetFuel;
+					nsDir = true;
+					road = true;
+				}
+
+				if((i % 3) != 0 && (j % 3) == 0 && !skipVertRoad) {
+					s.type = 0;
+					tileObject = street;
+					burnedObject = burnedStreet;
+					s.fireFuel = streetFuel;
+					ewDir = true;
+					road = true;
+				}
+																			
+	
+				if(!road) {
 					switch(Random.Range(0, 10)) {
 						case 5:
 						case 6:
@@ -98,12 +142,20 @@ public class Map : MonoBehaviour {
 				Transform t = Instantiate(tileObject);
 				mapObjects[i, j].SetParent(this.transform);
 				t.SetParent(mapObjects[i,j]);
+				if(nsDir) { 
+					Renderer r = t.GetComponent<Renderer>();
+					r.sharedMaterial = roadNS;
+				}
+				if(ewDir) { 
+					Renderer r = t.GetComponent<Renderer>();
+					r.sharedMaterial = roadEW; 
+				} 
 				mapObjects[i, j].position = new Vector3(i*100, 0, j*100);
 				s.x = i; s.y = j;
 				s.currentPrefab  = t;
 				s.originalPrefab = tileObject;
 				s.burnedPrefab   = burnedObject;
-				s.burningPrefab  = burnedObject;
+				s.burningPrefab  = tileObject;
 			}
 		}
 		

@@ -193,6 +193,8 @@ MonoBehaviour:
   parkFuel: .5
   barnFuel: .899999976
   rowHousesFuel: .699999988
+  roadNS: {fileID: 2100000, guid: 6c9e5c748e89f4e309e5cf9ca08d900c, type: 2}
+  roadEW: {fileID: 2100000, guid: 8dc40a904611b469c85f3b3ab8563dd8, type: 2}
   emptyTileObject: {fileID: 450200, guid: 2e67d6aca17ac48fd8e40067bd08177f, type: 2}
   street: {fileID: 485886, guid: 190befd212f7f4d4887b7959aba7ecea, type: 2}
   burnedStreet: {fileID: 483462, guid: e25a7705e31dd824999dab9e256c9026, type: 2}

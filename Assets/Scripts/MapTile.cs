@@ -12,6 +12,10 @@ public class MapTile : MonoBehaviour {
 	public Transform burningPrefab;	
 	public Transform burnedPrefab;
 
+	public Material roadNS;
+	public Material roadEW;
+	public Material roadIntersection;
+
 	public int x,y;
 	bool onFire;
 	bool isBurned;
@@ -116,14 +120,14 @@ public class MapTile : MonoBehaviour {
 	//Swap to burning prefab
 	public void StartBurning(int x, int y) {
 		if (!isBurned && !isOozed) {
-		Debug.Log("burnedPrefab is " + burningPrefab.ToString());
+		//Debug.Log("burnedPrefab is " + burningPrefab.ToString());
 			if (burningPrefab) {
 				Transform newPrefab = Instantiate (burningPrefab);
 				Destroy (currentPrefab.gameObject);
 				currentPrefab = newPrefab;
 				currentPrefab.SetParent(this.transform);
 				currentPrefab.transform.position = transform.position;
-				Debug.Log("currentPrefab is " + currentPrefab.ToString());
+				//Debug.Log("currentPrefab is " + currentPrefab.ToString());
 				onFire = true;
 			}
 		}
