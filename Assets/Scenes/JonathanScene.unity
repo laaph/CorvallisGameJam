@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 2025049864}
   movementSpeed: 15
+  scrollSpeed: 100
   gameActionOn: 1
   mainMenu: 0
   creditsScreen: 0
@@ -288,22 +289,22 @@ MonoBehaviour:
   emptyTileObject: {fileID: 450200, guid: 2e67d6aca17ac48fd8e40067bd08177f, type: 2}
   street: {fileID: 485886, guid: 190befd212f7f4d4887b7959aba7ecea, type: 2}
   burnedStreet: {fileID: 483462, guid: e25a7705e31dd824999dab9e256c9026, type: 2}
-  oozeStreet: {fileID: 400016, guid: 31794a1a9eaa02e46a7c177c284b9889, type: 3}
+  oozeStreet: {fileID: 422914, guid: c182f4eea152205478141b54891537ac, type: 2}
   skyScraper: {fileID: 400010, guid: 6a57ec3f22a0740c896af7726db63bae, type: 3}
   burnedSkyScraper: {fileID: 496750, guid: 4aee8ebe05d209344a5230fd03d974f7, type: 2}
-  oozeSkyScraper: {fileID: 400010, guid: 216bdb646bbaffc4496f10244bd6f24b, type: 3}
-  smallHouse: {fileID: 400020, guid: 9108d037cd1074903b336283f3d04d48, type: 3}
+  oozeSkyScraper: {fileID: 498718, guid: 9002b6fc6d925c04c8c98e77e333a71a, type: 2}
+  smallHouse: {fileID: 400020, guid: f82057e1499e07148a3ebb22a500757b, type: 3}
   burnedSmallHouse: {fileID: 400020, guid: 3d375cb10630242659cd651cd76fc6b8, type: 3}
-  oozeSmallHouse: {fileID: 400020, guid: ab9b19e75b6442c46b7458c8ca14f7c7, type: 3}
-  park: {fileID: 400016, guid: 5cfcd1cf636954cd0beb2e81ff270c6c, type: 3}
+  oozeSmallHouse: {fileID: 462430, guid: a1f3964f4d889c344885441769dea8f5, type: 2}
+  park: {fileID: 400016, guid: 8ff105a09f4942143b6a476a1d8c4c02, type: 3}
   burnedPark: {fileID: 400016, guid: c84647249c2a548558799f1f06e07b43, type: 3}
-  oozePark: {fileID: 400016, guid: 31794a1a9eaa02e46a7c177c284b9889, type: 3}
-  barn: {fileID: 400000, guid: 30ba8bb3b3fcb41bdab27ff1e293e8b3, type: 3}
+  oozePark: {fileID: 462430, guid: a1f3964f4d889c344885441769dea8f5, type: 2}
+  barn: {fileID: 400000, guid: 39793eb93d4a2a64c84f440541d0fa33, type: 3}
   burnedBarn: {fileID: 400000, guid: e2905396b952441239b87e66e5ae0015, type: 3}
-  oozeBarn: {fileID: 400000, guid: a45f61d2145ab1547b863614b8667697, type: 3}
-  rowHouses: {fileID: 400022, guid: fa055e629947442b9a28dc76b7307acb, type: 3}
+  oozeBarn: {fileID: 471394, guid: 73b147f22f0404146837e8b4afdeda7b, type: 2}
+  rowHouses: {fileID: 400022, guid: d1adb9f61fc75f6468a956ae0a5ad342, type: 3}
   burnedRowHouses: {fileID: 400022, guid: 406eca0eb30984b739d05f446f67ddb3, type: 3}
-  oozeRowHouses: {fileID: 400022, guid: f826693788bd8e940999801c136db6b3, type: 3}
+  oozeRowHouses: {fileID: 439112, guid: 91cbe522ed5b5fb42853a53812690240, type: 2}
   burnedMat: {fileID: 2100000, guid: 07b07c9af5bd9441a8d42b25c3797fe9, type: 2}
   fireMat: {fileID: 2100000, guid: 4c412e0cfca1d4c26b4de3ad7c3d3ed9, type: 2}
 --- !u!4 &1056859540
@@ -364,7 +365,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 913f4f95c9a7b9f43ab7241e2aabf49e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -405,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 2025049864}
   m_LocalRotation: {x: .382683456, y: 0, z: 0, w: .923879504}
   m_LocalPosition: {x: 300, y: 300, z: -300}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
