@@ -20,6 +20,18 @@ public class MapTile : MonoBehaviour {
 
 	public float fireFuel = 1;
 	public int oozeLife = 1;
+	
+	
+	public int type;
+	// enum for int[,] map
+	// 0 = street
+	// 1 = burned thing
+	// 2 = smallhouses
+	// 3 = park
+	// 4 = skyscraper
+	// 5 = barn
+	// 6 = rowhouses
+	
 	Map m;
 
 	// Use this for initialization
