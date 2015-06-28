@@ -7,7 +7,8 @@ public class CameraControl : MonoBehaviour
 	public GameObject cursor;
 	public float movementSpeed = 0.05f;
 	float borderMargin = 50;
-
+	float max_y=1000;
+	float min_y=0;
 
 	// Use this for initialization
 	void Start ()
@@ -34,7 +35,11 @@ public class CameraControl : MonoBehaviour
 		if (Input.mousePosition.y < borderMargin) {
 			transform.Translate (0, 0, -movementSpeed, Space.World);
 		}
-
+		float y_translate = -Input.GetAxis("Mouse ScrollWheel")*50;
+		float camera_eulerx= Mathf.Clamp(transform.eulerAngles.x-Input.GetAxis("Mouse ScrollWheel")*20, 45,90);
+		float new_y = Mathf.Clamp(transform.position.y+y_translate, min_y, max_y);
+		transform.position= new Vector3(transform.position.x,new_y, transform.position.z);
+		transform.eulerAngles = new Vector3(camera_eulerx,0,0);
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
