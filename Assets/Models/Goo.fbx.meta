@@ -1,46 +1,15 @@
 fileFormatVersion: 2
-guid: 2ebe30316049f4d3587e09ede537f672
-timeCreated: 1435380258
+guid: 1c78bb17951d17044bb65d0e8cd87b79
+timeCreated: 1435468292
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Camera
-    100002: //RootNode
-    100004: Icosphere
-    100006: Icosphere.001
-    100008: Icosphere.002
-    100010: Icosphere.003
-    100012: Icosphere.004
-    100014: Icosphere.005
-    100016: Lamp
-    400000: Camera
-    400002: //RootNode
-    400004: Icosphere
-    400006: Icosphere.001
-    400008: Icosphere.002
-    400010: Icosphere.003
-    400012: Icosphere.004
-    400014: Icosphere.005
-    400016: Lamp
-    2300000: Icosphere
-    2300002: Icosphere.001
-    2300004: Icosphere.002
-    2300006: Icosphere.003
-    2300008: Icosphere.004
-    2300010: Icosphere.005
-    3300000: Icosphere
-    3300002: Icosphere.001
-    3300004: Icosphere.002
-    3300006: Icosphere.003
-    3300008: Icosphere.004
-    3300010: Icosphere.005
-    4300000: Icosphere.005
-    4300002: Icosphere.004
-    4300004: Icosphere.003
-    4300006: Icosphere.002
-    4300008: Icosphere.001
-    4300010: Icosphere
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Icosphere
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,10 +19,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

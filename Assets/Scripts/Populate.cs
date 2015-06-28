@@ -46,9 +46,9 @@ public class Populate : MonoBehaviour {
 
     public void spawnAll()
     {
-        for (int x = 0; x < 50; x++)
+        for (int x = 0; x < map.GetMapSize(); x++)
         {
-            for (int y = 0; y < 50; y++)
+            for (int y = 0; y < map.GetMapSize(); y++)
             {
                 spawn(x, y);
             }

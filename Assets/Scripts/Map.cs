@@ -40,7 +40,7 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static int maxSize = 100 ;
+	static public int maxSize = 100;
 
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
@@ -221,5 +221,9 @@ public class Map : MonoBehaviour {
 	}
 	public Material getFireMat() {
 		return fireMat;
+	}
+
+	public int GetMapSize(){
+		return maxSize;
 	}
 }

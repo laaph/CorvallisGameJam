@@ -149,7 +149,6 @@ public class MapTile : MonoBehaviour {
 
 	//Swap to burned prefab
 	public void SetBurned(int x, int y) {
-		Debug.Log("burning");
 			if (burnedPrefab) {
 			Transform t = Instantiate (burnedPrefab);
 				GameObject newPrefab = t.gameObject;
@@ -166,16 +165,8 @@ public class MapTile : MonoBehaviour {
 	//Swap to ooze prefab
 	public void Oozify(int x, int y) {
 		if (!onFire && !isBurned) {
-			if (oozePrefab) {
-				GameObject newPrefab = Instantiate (oozePrefab);
-				newPrefab.transform.position = transform.position;
-				newPrefab.transform.SetParent (transform.parent.transform);
-				newPrefab.GetComponent<MapTile> ().setOozed ();
-				newPrefab.GetComponent<MapTile> ().x = x;
-				newPrefab.GetComponent<MapTile> ().y = y;
-				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
-				Destroy (gameObject);
-			}
+			GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10);
+			isOozed = true;
 		}
 	}
 }
