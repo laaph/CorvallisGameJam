@@ -28,11 +28,11 @@ public class Populate : MonoBehaviour {
         Invoke("spawnAll", 1.0f);
     }
 
-    public void setProgression(int xTile, int yTile, int amount)
+    public void setProgression(int xTile, int yTile, int amount, bool bFire)
     {
         foreach (Transform child in map.mapObjects[xTile,yTile])
         {
-            if (child.CompareTag("Goo"))
+            if (!bFire && child.CompareTag("Goo"))
             {
                 if (child.GetComponent<Goo>().ProgressionNumber < amount)
                 {
@@ -43,17 +43,17 @@ public class Populate : MonoBehaviour {
                     child.GetComponent<Renderer>().enabled = false;
                 }
             }
-//            if (child.CompareTag("Fire"))
-//            {
-//                if (child.GetComponent<Fire>().FireID < amount)
-//                {
-//                    child.GetComponent<SpriteRenderer>().enabled = true;
-//                }
-//                else
-//                {
-//                    child.GetComponent<SpriteRenderer>().enabled = false;
-//                }
-//            }
+            if (bFire && child.CompareTag("Fire"))
+            {
+                if (child.GetComponent<Fire>().FireID < amount)
+                {
+                    child.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                else
+                {
+                    child.GetComponent<SpriteRenderer>().enabled = false;
+                }
+            }
         }
     }
 

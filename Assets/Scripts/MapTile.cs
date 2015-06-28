@@ -116,18 +116,17 @@ public class MapTile : MonoBehaviour {
 	//Swap to burning prefab
 	public void StartBurning(int x, int y) {
 		if (!isBurned && !isOozed) {
-			currentPrefab.gameObject.SetActive(false);
-			burnedPrefab.gameObject.SetActive(true);
+			GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10, true);
 			onFire = true;
 		}
 		//Burn ooze
 		if (isOozed) {
 			oozeLife -= 1;
 			if (oozeLife <= 0) {
-				currentPrefab.gameObject.SetActive(false);
-				burnedPrefab.gameObject.SetActive(true);
+				currentPrefab.gameObject.SetActive(true);
 				oozePrefab.gameObject.SetActive(false);
-				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0);
+				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10, true);
+				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0, false);
 				onFire = true;
 			}
 		}
@@ -135,17 +134,8 @@ public class MapTile : MonoBehaviour {
 
 	//Swap to burned prefab
 	public void SetBurned(int x, int y) {
-//			if (burnedPrefab) {
-//			Transform t = Instantiate (burnedPrefab);
-//				GameObject newPrefab = t.gameObject;
-//				newPrefab.transform.position = transform.position;
-//				newPrefab.transform.SetParent (transform.parent.transform);
-//				newPrefab.GetComponent<MapTile> ().setBurned ();
-//				newPrefab.GetComponent<MapTile> ().x = x;
-//				newPrefab.GetComponent<MapTile> ().y = y;
-//				newPrefab.transform.parent.gameObject.GetComponent<Map> ().SetGridObject (x, y, newPrefab.transform);
-//				Destroy (gameObject);
-//			}
+		currentPrefab.gameObject.SetActive(false);
+		burnedPrefab.gameObject.SetActive(true);
 		onFire = false;
 
 	}
@@ -155,7 +145,7 @@ public class MapTile : MonoBehaviour {
 		if (!onFire && !isBurned) {
 			currentPrefab.gameObject.SetActive(false);
 			oozePrefab.gameObject.SetActive(true);
-			GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10);
+			GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10, false);
 			isOozed = true;
 		}
 	}
