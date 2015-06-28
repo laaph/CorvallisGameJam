@@ -41,6 +41,17 @@ public class Populate : MonoBehaviour {
                     child.GetComponent<Renderer>().enabled = false;
                 }
             }
+            if (child.CompareTag("Fire"))
+            {
+                if (child.GetComponent<Fire>().FireID < amount)
+                {
+                    child.GetComponent<ParticleSystem>().Play(true);
+                }
+                else
+                {
+                    child.GetComponent<ParticleSystem>().Pause(true);
+                }
+            }
         }
     }
 
@@ -75,12 +86,25 @@ public class Populate : MonoBehaviour {
                     currentPosition = tileCenter + new Vector3((x * 35 - 25 + jitter()) * spacing, (y * 35 + jitter()) * spacing, (z * 35 - 25 + jitter()) * spacing);
                     if (Physics.CheckSphere(currentPosition, 10) == true)
                     {
-                        GameObject currentInstance;
-                        currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
-                        currentInstance.transform.parent = map.mapObjects[xTile, yTile];
-                        currentInstance.GetComponent<Renderer>().enabled = false;
-                        currentInstance.GetComponent<Goo>().ProgressionNumber = currentProgression;
-                        currentProgression += 1;
+                        if (prefab.CompareTag("Goo"))
+                        {
+                            GameObject currentInstance;
+                            currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
+                            currentInstance.transform.parent = map.mapObjects[xTile, yTile];
+                            //currentInstance.GetComponent<Renderer>().enabled = false;
+                            currentInstance.GetComponent<Goo>().ProgressionNumber = currentProgression;
+                            currentProgression += 1;
+                        }
+
+                        if (prefab.CompareTag("Fire"))
+                        {
+                            GameObject currentInstance;
+                            currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
+                            currentInstance.transform.parent = map.mapObjects[xTile, yTile];
+                            currentInstance.GetComponent<ParticleSystem>().Pause();
+                            currentInstance.GetComponent<Fire>().FireID = currentProgression;
+                            currentProgression += 1;
+                        }                        
                     }
                 }
             }            
@@ -88,25 +112,58 @@ public class Populate : MonoBehaviour {
     }
 
     public void despawn(int xTile, int yTile)
-    {        
-        foreach (Transform child in map.mapObjects[xTile, yTile])
+    {
+        if (prefab.CompareTag("Goo"))
         {
-            if (child.CompareTag("Goo"))
+            foreach (Transform child in map.mapObjects[xTile, yTile])
             {
-                Destroy(child.gameObject);
+                if (child.CompareTag("Goo"))
+                {
+                    Destroy(child.gameObject);
+                }
             }
         }
+        if (prefab.CompareTag("Fire"))
+        {
+            foreach (Transform child in map.mapObjects[xTile, yTile])
+            {
+                if (child.CompareTag("Fire"))
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+        }        
     }
 
     public void setVisible(int xTile, int yTile, bool visible)
     {
-        foreach (Transform child in map.mapObjects[xTile, yTile])
+        if (prefab.CompareTag("Goo"))
         {
-            if (child.CompareTag("Goo"))
+            foreach (Transform child in map.mapObjects[xTile, yTile])
             {
-                child.gameObject.GetComponent<Renderer>().enabled = visible;
+                if (child.CompareTag("Goo"))
+                {
+                    child.gameObject.GetComponent<Renderer>().enabled = visible;
+                }
             }
         }
+        if (prefab.CompareTag("Fire"))
+        {
+            foreach (Transform child in map.mapObjects[xTile, yTile])
+            {
+                if (child.CompareTag("Fire"))
+                {
+                    if (visible == true)
+                    {
+                        child.gameObject.GetComponent<ParticleSystem>().Play();
+                    }
+                    else if (visible == false)
+                    {
+                        child.gameObject.GetComponent<ParticleSystem>().Pause();
+                    }
+                }
+            }
+        }        
     }
 
     int jitter()
