@@ -260,6 +260,7 @@ GameObject:
   - 4: {fileID: 1056859540}
   - 114: {fileID: 1056859539}
   - 114: {fileID: 1056859541}
+  - 114: {fileID: 1056859542}
   m_Layer: 0
   m_Name: Map
   m_TagString: Map
@@ -331,11 +332,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountTest: 10
-  prefab: {fileID: 184220, guid: fd0e0e1df01bf8d4888295497d839b63, type: 2}
+  prefab: {fileID: 192722, guid: fd0e0e1df01bf8d4888295497d839b63, type: 2}
   randomMin: -25
   randomMax: 25
   count: .5
-  spacing: 1
+  objectSize: 25
+  spacing: 2
+  map: {fileID: 1056859539}
+--- !u!114 &1056859542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1056859538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa0070bdd97e594c8b4fd34acd5dc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountTest: 1000
+  prefab: {fileID: 196464, guid: 096919454986a294f872cc650601b89b, type: 2}
+  randomMin: -25
+  randomMax: 25
+  count: .349999994
+  objectSize: 50
+  spacing: 2
   map: {fileID: 1056859539}
 --- !u!1 &2025049864
 GameObject:
