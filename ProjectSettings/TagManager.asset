@@ -9,6 +9,7 @@ TagManager:
   - Cursor
   - Goo
   - Burned
+  - Fire
   layers:
   - Default
   - TransparentFX

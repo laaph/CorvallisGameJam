@@ -62,8 +62,8 @@ public class CameraControl : MonoBehaviour
 			if (Input.GetMouseButtonDown (0)) {
 				GameObject g = hit.collider.gameObject;
 				while (g.tag != "MapTile") {
-					Debug.Log (g.tag);
-					Debug.Log (g.ToString ());
+//					Debug.Log (g.tag);
+//					Debug.Log (g.ToString ());
 					g = g.transform.parent.gameObject;
 				}
 				MapTile s = g.GetComponent<MapTile> ();

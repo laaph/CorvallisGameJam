@@ -14,7 +14,7 @@ public class PeopleWalkingScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		Vector3 v = transform.position;
 		switch(direction) {
 			case 0:
