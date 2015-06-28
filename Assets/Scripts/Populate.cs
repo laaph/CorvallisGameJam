@@ -16,6 +16,8 @@ public class Populate : MonoBehaviour {
     [SerializeField]
     float count;
     [SerializeField]
+    float objectSize;
+    [SerializeField]
     float spacing;
 
     public Map map;
@@ -45,11 +47,11 @@ public class Populate : MonoBehaviour {
             {
                 if (child.GetComponent<Fire>().FireID < amount)
                 {
-                    child.GetComponent<ParticleSystem>().Play(true);
+                    child.GetComponent<SpriteRenderer>().enabled = true;
                 }
                 else
                 {
-                    child.GetComponent<ParticleSystem>().Pause(true);
+                    child.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
         }
@@ -83,7 +85,7 @@ public class Populate : MonoBehaviour {
             {
                 for (int z = 0; z < 3 * count; z++) 
                 {
-                    currentPosition = tileCenter + new Vector3((x * 35 - 25 + jitter()) * spacing, (y * 35 + jitter()) * spacing, (z * 35 - 25 + jitter()) * spacing);
+                    currentPosition = tileCenter + new Vector3((x * objectSize - 25 + jitter()) * spacing, (y * objectSize + jitter()) * spacing, (z * objectSize - 25 + jitter()) * spacing);
                     if (Physics.CheckSphere(currentPosition, 10) == true)
                     {
                         if (prefab.CompareTag("Goo"))
@@ -101,7 +103,7 @@ public class Populate : MonoBehaviour {
                             GameObject currentInstance;
                             currentInstance = Instantiate(prefab, currentPosition, Quaternion.identity) as GameObject;
                             currentInstance.transform.parent = map.mapObjects[xTile, yTile];
-                            currentInstance.GetComponent<ParticleSystem>().Pause();
+                            //currentInstance.GetComponent<SpriteRenderer>().enabled = false;
                             currentInstance.GetComponent<Fire>().FireID = currentProgression;
                             currentProgression += 1;
                         }                        
