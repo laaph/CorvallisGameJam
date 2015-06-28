@@ -120,6 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 2025049864}
   movementSpeed: 15
+  gameActionOn: 1
+  mainMenu: 0
+  creditsScreen: 0
+  storyScreen: 0
 --- !u!81 &23164955
 AudioListener:
   m_ObjectHideFlags: 0
