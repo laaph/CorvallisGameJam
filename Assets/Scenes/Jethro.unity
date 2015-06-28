@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   people:
-  - {fileID: 454252, guid: dd9f6cb625c0946d9af639cc0f7b5b6b, type: 2}
-  - {fileID: 407236, guid: c00272af274d44f5d92b5ddfd7d32f6d, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   peopleHolder: {fileID: 728487041}
 --- !u!1 &728487040
 GameObject:
