@@ -25,7 +25,7 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static int maxSize = 100 ;
+	static int maxSize = 50 ;
 
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
@@ -99,7 +99,7 @@ public class Map : MonoBehaviour {
 		Random rand = new Random ();
 		
 		float u1 = Random.Range (0f, 1f);
-		float u2 = Random.Range (0f, ==1f);
+		float u2 = Random.Range (0f, 1f);
 		float randStdNormal = Mathf.Sqrt(-2 * Mathf.Log(u1))* Mathf.Sin(2* 
 		                                                                Mathf.PI* u2);
 		return mean + stdDev * randStdNormal;
