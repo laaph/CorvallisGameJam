@@ -15,12 +15,22 @@ public class Map : MonoBehaviour {
 	public Transform emptyTileObject;
 
 	public Transform street;
-	public Transform burnedThing;
+	public Transform burnedStreet;
+	
 	public Transform skyScraper;
+	public Transform burnedSkyScraper;
+	
 	public Transform smallHouse;
+	public Transform burnedSmallHouse;
+	
 	public Transform park;
+	public Transform burnedPark;
+	
 	public Transform barn;
+	public Transform burnedBarn;
+	
 	public Transform rowHouses;
+	public Transform burnedRowHouses;
 	
 	public Material burnedMat;
 	public Material fireMat;
@@ -38,10 +48,12 @@ public class Map : MonoBehaviour {
 				MapTile s = mapObjects[i,j].GetComponent<MapTile>();
 				
 				Transform tileObject = null;
-								
+				Transform burnedObject = null;
+											
 				if(((i % 3) == 0 || (j % 3) == 0) && Random.Range(0f, 1f) < 0.9f) {
 					s.type = 0;
-					tileObject = Instantiate(street);
+					tileObject = street; //Instantiate(street);
+					burnedObject = burnedStreet;
 					s.fireFuel = streetFuel;
 					
 				} else {
@@ -51,37 +63,47 @@ public class Map : MonoBehaviour {
 						case 9:
 						case 0:
 							s.type = 2;
-							tileObject = Instantiate(smallHouse);
+							tileObject = smallHouse; //Instantiate(smallHouse);
+							burnedObject = burnedSmallHouse;
 							s.fireFuel = smallHouseFuel;
 							break;
 						case 1:
 							s.type = 3;
-							tileObject = Instantiate(park);
+							tileObject = park; //Instantiate(park);
+							burnedObject = burnedPark;
 							s.fireFuel = parkFuel;
 							break;
 						case 2:
 							s.type = 4;
-							tileObject = Instantiate(skyScraper);
+							tileObject = skyScraper;//Instantiate(skyScraper);
+							burnedObject = burnedSkyScraper;
 							s.fireFuel = skyScraperFuel;
 							break;
 						case 3:
 							s.type = 5;
-							tileObject = Instantiate(barn);
+							tileObject = barn; //Instantiate(barn);
+							burnedObject = burnedBarn;
 							s.fireFuel = barnFuel;
 							break;
 						case 7:
 						case 8:
 						case 4:
 							s.type = 6;
-							tileObject = Instantiate(rowHouses);
+							tileObject = rowHouses; //Instantiate(rowHouses);
+							burnedObject = burnedRowHouses;
 							s.fireFuel = rowHousesFuel;
 						break;
 					}
 				}
+				Transform t = Instantiate(tileObject);
 				mapObjects[i, j].SetParent(this.transform);
-				tileObject.SetParent(mapObjects[i,j]);
+				t.SetParent(mapObjects[i,j]);
 				mapObjects[i, j].position = new Vector3(i*100, 0, j*100);
 				s.x = i; s.y = j;
+				s.currentPrefab  = t;
+				s.originalPrefab = tileObject;
+				s.burnedPrefab   = burnedObject;
+				s.burningPrefab  = burnedObject;
 			}
 		}
 		
@@ -96,7 +118,7 @@ public class Map : MonoBehaviour {
 	public float randomgaussian(float mean, float stdDev)
 	{
 		//generates a random number within a gaussian distribution
-		Random rand = new Random ();
+//		Random rand = new Random ();
 		
 		float u1 = Random.Range (0f, 1f);
 		float u2 = Random.Range (0f, 1f);

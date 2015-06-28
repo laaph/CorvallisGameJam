@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 30ba8bb3b3fcb41bdab27ff1e293e8b3
-timeCreated: 1435443225
+guid: e2905396b952441239b87e66e5ae0015
+timeCreated: 1435458914
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,18 +9,16 @@ ModelImporter:
     100002: Layer:barn
     100004: Layer:greenery
     100006: Layer:pasture
-    100008: Layer:pasture 1
-    100010: Layer:rowhouse1
-    100012: Layer:white
-    100014: Layer:wood
+    100008: Layer:rowhouse1
+    100010: Layer:white
+    100012: Layer:wood
     400000: //RootNode
     400002: Layer:barn
     400004: Layer:greenery
     400006: Layer:pasture
-    400008: Layer:pasture 1
-    400010: Layer:rowhouse1
-    400012: Layer:white
-    400014: Layer:wood
+    400008: Layer:rowhouse1
+    400010: Layer:white
+    400012: Layer:wood
     2300000: Layer:barn
     2300002: Layer:greenery
     2300004: Layer:pasture
