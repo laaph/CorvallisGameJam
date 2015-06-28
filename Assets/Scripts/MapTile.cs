@@ -60,10 +60,14 @@ public class MapTile : MonoBehaviour {
 				//Decrease fuel
 				fireFuel -= Time.deltaTime;
 				if (fireFuel <= 0) {
-					print (fireFuel);
+					//print (fireFuel);
 					onFire = false;
 					isBurned = true;
 					SetBurned(x, y);
+					if (type == 4)
+					{
+					m.Explode(x,y,6,6);
+					}
 				}
 			}	
 			//Reset timer
@@ -123,7 +127,7 @@ public class MapTile : MonoBehaviour {
 		}
 		//Burn ooze
 		if (isOozed) {
-			print ("burrn ooze");
+			//print ("burn ooze");
 			oozeLife -= 1;
 			if (oozeLife <= 0) {
 				if (burningPrefab) {
