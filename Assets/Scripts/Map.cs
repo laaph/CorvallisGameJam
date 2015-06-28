@@ -40,7 +40,7 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static int maxSize = 20 ;
+	static int maxSize = 100 ;
 
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
@@ -52,6 +52,9 @@ public class Map : MonoBehaviour {
 		skipVertRoad = false; skipHorizRoad = false;
 		
 		for(int i = 0; i < maxSize; i++) {
+		if(i % 3 == 0) {
+			skipHorizRoad = false;
+		}
 			for(int j = 0; j < maxSize; j++) {
 				bool nsDir = false;
 				bool ewDir = false;
@@ -70,15 +73,15 @@ public class Map : MonoBehaviour {
 					s.fireFuel = streetFuel;
 					road = true;
 					
-					skipVertRoad = false;  skipHorizRoad = false;
+					skipVertRoad = false;  
 					// Cross street
-					if(Random.Range(0f, 1f) > 0.9f) {
+					if(Random.Range(0f, 1f) > 0.95f) {
 						skipVertRoad = true;
 					}
-					if(Random.Range(0f, 1f) > 0.9f) {
+					if(Random.Range(0f, 1f) > 0.95f) {
 						skipHorizRoad = true;
 					}
-					Debug.Log("x, y" + i + j + " skips " + skipVertRoad + skipHorizRoad);
+					//Debug.Log("x, y" + i + j + " skips " + skipVertRoad + skipHorizRoad);
 				}
 				
 				if((i % 3) == 0 && (j % 3) != 0 && !skipHorizRoad) {

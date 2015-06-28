@@ -11,11 +11,7 @@ public class MapTile : MonoBehaviour {
 	public Transform originalPrefab;
 	public Transform burningPrefab;	
 	public Transform burnedPrefab;
-
-	public Material roadNS;
-	public Material roadEW;
-	public Material roadIntersection;
-
+ 
 	public int x,y;
 	bool onFire;
 	bool isBurned;
