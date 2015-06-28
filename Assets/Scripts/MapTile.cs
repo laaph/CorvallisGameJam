@@ -17,14 +17,13 @@ public class MapTile : MonoBehaviour {
 	float fireSpreadTimer = 0;
 	float oozeSpreadRate = 0.5f;
 	float oozeSpreadTimer = 0;
+
 	public float fireFuel = 1;
 	public int oozeLife = 1;
-	Renderer r;
 	Map m;
 
 	// Use this for initialization
 	void Start () {
-		r = GetComponent<Renderer>();
 		GameObject g = GameObject.FindWithTag("Map");
 		m = g.GetComponentInChildren<Map>();
 	}

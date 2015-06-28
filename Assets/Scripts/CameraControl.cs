@@ -31,6 +31,13 @@ public class CameraControl : MonoBehaviour {
 		if (Input.mousePosition.y < borderMargin) {
 			transform.Translate( 0, 0, -movementSpeed, Space.World );
 		}
+		if (Input.GetAxis("Mouse ScrollWheel") < 0) { // back 
+			Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize-1, 1);
+		}
+	
+		if (Input.GetAxis("Mouse ScrollWheel") > 0) { // forward 
+			Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize-1, 6);
+		}
 
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -45,6 +52,7 @@ public class CameraControl : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			MapTile s = hit.collider.gameObject.GetComponent<MapTile>();
 			s.StartBurning(s.x, s.y);
+//			Debug.Log ("clicked");
 		}
 		//Set ooze (for debug)
 		if (Input.GetMouseButtonDown (1)) {
