@@ -6,8 +6,13 @@ public class CameraControl : MonoBehaviour
 
 	public GameObject cursor;
 	public float movementSpeed = 0.05f;
+	public bool gameActionOn 	= true;
+	public bool mainMenu		= false;
+	public bool creditsScreen	= false;
+	public bool storyScreen		= false;
 	float borderMargin = 50;
-
+	float max_y=1000;
+	float min_y=0;
 
 	// Use this for initialization
 	void Start ()
@@ -18,6 +23,13 @@ public class CameraControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
+		float y_translate = -Input.GetAxis("Mouse ScrollWheel")*50;
+		float camera_eulerx= Mathf.Clamp(transform.eulerAngles.x-Input.GetAxis("Mouse ScrollWheel")*20, 45,90);
+		float new_y = Mathf.Clamp(transform.position.y+y_translate, min_y, max_y);
+		transform.position= new Vector3(transform.position.x,new_y, transform.position.z);
+		transform.eulerAngles = new Vector3(camera_eulerx,0,0);
+	
 		//Move right
 		if (Input.mousePosition.x > Screen.width - borderMargin) {
 			transform.Translate (movementSpeed, 0, 0, Space.World);
@@ -34,38 +46,40 @@ public class CameraControl : MonoBehaviour
 		if (Input.mousePosition.y < borderMargin) {
 			transform.Translate (0, 0, -movementSpeed, Space.World);
 		}
-
-		RaycastHit hit;
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-		if (Physics.Raycast (ray, out hit)) {
-			cursor.SetActive (true);
-			cursor.transform.position = hit.point;
-		} else {
-			cursor.SetActive (false);
-		}
-
-		if (Input.GetMouseButtonDown (0)) {
-			GameObject g = hit.collider.gameObject;
-			while (g.tag != "MapTile") {
-				Debug.Log (g.tag);
-				Debug.Log (g.ToString ());
-				g = g.transform.parent.gameObject;
+		
+		if(gameActionOn) {
+		
+			RaycastHit hit;
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+	
+			if (Physics.Raycast (ray, out hit)) {
+				cursor.SetActive (true);
+				cursor.transform.position = hit.point;
+			} else {
+				cursor.SetActive (false);
 			}
-			MapTile s = g.GetComponent<MapTile> ();
-			s.StartBurning (s.x, s.y);
-						Debug.Log ("clicked");
-		}
 
-//		Set ooze (for debug)
-		if (Input.GetMouseButtonDown (1)) {
-			GameObject g = hit.collider.gameObject;
-			while (g.tag != "MapTile") {
-				g = g.transform.parent.gameObject;
+			if (Input.GetMouseButtonDown (0)) {
+				GameObject g = hit.collider.gameObject;
+				while (g.tag != "MapTile") {
+					Debug.Log (g.tag);
+					Debug.Log (g.ToString ());
+					g = g.transform.parent.gameObject;
+				}
+				MapTile s = g.GetComponent<MapTile> ();
+				s.StartBurning (s.x, s.y);
+							Debug.Log ("clicked");
 			}
-			MapTile s = g.GetComponent<MapTile> ();
-			s.Oozify (s.x, s.y);
+	
+	//		Set ooze (for debug)
+			if (Input.GetMouseButtonDown (1)) {
+				GameObject g = hit.collider.gameObject;
+				while (g.tag != "MapTile") {
+					g = g.transform.parent.gameObject;
+				}
+				MapTile s = g.GetComponent<MapTile> ();
+				s.Oozify (s.x, s.y);
+			}
 		}
-
 	}
 }

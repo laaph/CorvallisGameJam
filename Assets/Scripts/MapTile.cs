@@ -127,6 +127,7 @@ public class MapTile : MonoBehaviour {
 				currentPrefab.gameObject.SetActive(false);
 				burnedPrefab.gameObject.SetActive(true);
 				oozePrefab.gameObject.SetActive(false);
+				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0);
 				onFire = true;
 			}
 		}
@@ -146,6 +147,7 @@ public class MapTile : MonoBehaviour {
 //				Destroy (gameObject);
 //			}
 		onFire = false;
+
 	}
 
 	//Swap to ooze prefab

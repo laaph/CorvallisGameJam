@@ -160,6 +160,7 @@ public class Map : MonoBehaviour {
 				mapObjects[i, j].SetParent(this.transform);
 				Transform t = Instantiate(tileObject);
 				t.SetParent(mapObjects[i,j]);
+
 				Transform b = Instantiate(burnedObject);
 				b.SetParent(mapObjects[i,j]);
 				b.transform.position = t.transform.position;
@@ -168,6 +169,12 @@ public class Map : MonoBehaviour {
 				o.SetParent(mapObjects[i,j]);
 				o.transform.position = t.transform.position;
 				o.gameObject.SetActive(false);
+
+
+				t.gameObject.isStatic = true;
+				for(int k = 0; k < t.childCount; k++) {
+					t.GetChild(k).gameObject.isStatic = true;
+				}
 
 				if(nsDir) { 
 					Renderer r = t.GetComponent<Renderer>();
