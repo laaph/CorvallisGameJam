@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 510579086}
   - 114: {fileID: 510579085}
+  - 114: {fileID: 510579087}
   m_Layer: 0
   m_Name: Map
   m_TagString: Map
@@ -222,6 +223,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &510579087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510579084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586b2a12de8bb440aba79e55eead6660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  people:
+  - {fileID: 454252, guid: dd9f6cb625c0946d9af639cc0f7b5b6b, type: 2}
+  - {fileID: 407236, guid: c00272af274d44f5d92b5ddfd7d32f6d, type: 2}
+  peopleHolder: {fileID: 728487041}
+--- !u!1 &728487040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 728487041}
+  m_Layer: 0
+  m_Name: PeopleHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &728487041
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728487040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.29999995, z: 800}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1771893499
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +364,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 96754489}
   movementSpeed: 15
+  gameActionOn: 0
+  mainMenu: 1
+  creditsScreen: 0
+  storyScreen: 1
 --- !u!1 &2120365301
 GameObject:
   m_ObjectHideFlags: 0
