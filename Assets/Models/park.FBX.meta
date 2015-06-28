@@ -1,0 +1,119 @@
+fileFormatVersion: 2
+guid: 5cfcd1cf636954cd0beb2e81ff270c6c
+timeCreated: 1435458864
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Layer:0
+    100002: Layer:bldgconcrete
+    100004: Layer:greenery
+    100006: Layer:rowhouse4
+    100008: Layer:street
+    100010: Layer:water
+    100012: Layer:windows
+    100014: Layer:wood
+    100016: //RootNode
+    400000: Layer:0
+    400002: Layer:bldgconcrete
+    400004: Layer:greenery
+    400006: Layer:rowhouse4
+    400008: Layer:street
+    400010: Layer:water
+    400012: Layer:windows
+    400014: Layer:wood
+    400016: //RootNode
+    2300000: Layer:0
+    2300002: Layer:bldgconcrete
+    2300004: Layer:greenery
+    2300006: Layer:rowhouse4
+    2300008: Layer:street
+    2300010: Layer:water
+    2300012: Layer:windows
+    2300014: Layer:wood
+    3300000: Layer:0
+    3300002: Layer:bldgconcrete
+    3300004: Layer:greenery
+    3300006: Layer:rowhouse4
+    3300008: Layer:street
+    3300010: Layer:water
+    3300012: Layer:windows
+    3300014: Layer:wood
+    4300000: Layer:street
+    4300002: Layer:bldgconcrete
+    4300004: Layer:wood
+    4300006: Layer:greenery
+    4300008: Layer:0
+    4300010: Layer:windows
+    4300012: Layer:water
+    4300014: Layer:rowhouse4
+    6400000: Layer:0
+    6400002: Layer:bldgconcrete
+    6400004: Layer:greenery
+    6400006: Layer:rowhouse4
+    6400008: Layer:street
+    6400010: Layer:water
+    6400012: Layer:windows
+    6400014: Layer:wood
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

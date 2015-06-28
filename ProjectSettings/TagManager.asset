@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Map
-  - New Tag
+  - MapTile
+  - Cursor
   layers:
   - Default
   - TransparentFX
