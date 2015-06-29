@@ -6,11 +6,11 @@ using System.Collections.Generic;
 public class Map : MonoBehaviour {
 
 	public float streetFuel = 0.3f;
-	public float skyScraperFuel = 1.0f;
-	public float smallHouseFuel = 0.6f;
-	public float parkFuel = 0.5f;
-	public float barnFuel = 0.9f;
-	public float rowHousesFuel = 0.7f;
+	public float skyScraperFuel = 0.5f;
+	public float smallHouseFuel = 0.4f;
+	public float parkFuel = 0.2f;
+	public float barnFuel = 0.2f;
+	public float rowHousesFuel = 0.5f;
 	
 	
 	public Material roadNS;
@@ -232,7 +232,11 @@ public class Map : MonoBehaviour {
 			return;
 		}
 		MapTile tile = mapObjects[x,y].GetComponent<MapTile>() as MapTile;
-		tile.StartBurning(x, y);
+		if(!tile.isOozed)
+		{
+			tile.StartBurning(x, y);
+		}
+		
 	}
 
 	public void SetThingsOozed(int x, int y) {

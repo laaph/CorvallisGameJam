@@ -14,8 +14,8 @@ public class MapTile : MonoBehaviour {
  
 	public int x,y;
 	bool onFire;
-	bool isBurned;
-	bool isOozed;
+	public bool isBurned;
+	public bool isOozed;
 	float fireSpreadRate = 0.5f;
 	float fireSpreadTimer = 0;
 	float oozeSpreadRate = 0.5f;
@@ -49,7 +49,7 @@ public class MapTile : MonoBehaviour {
 		fireSpreadTimer += Time.deltaTime;
 		if (fireSpreadTimer > fireSpreadRate) {
 			if (onFire) {
-				if (Random.Range (0f, 1f) > 0.2) {
+				if (Random.Range (0f, 1f) > 0.15) {
 					// Set neighbors on fire
 					// Pick a direction
 					int x1 = 0;
@@ -69,7 +69,10 @@ public class MapTile : MonoBehaviour {
 					SetBurned(x, y);
 					if (type == 4)
 					{
-					m.Explode(x,y,6,6);
+					if(Random.Range(0f,1f)<0.05)
+					{
+					//m.Explode(x,y,6,6);
+					}
 					}
 				}
 			}	
