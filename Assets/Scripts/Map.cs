@@ -5,12 +5,15 @@ using System.Collections.Generic;
 
 public class Map : MonoBehaviour {
 
-	public float streetFuel = 0.3f;
-	public float skyScraperFuel = 1.0f;
-	public float smallHouseFuel = 0.6f;
-	public float parkFuel = 0.5f;
-	public float barnFuel = 0.9f;
-	public float rowHousesFuel = 0.7f;
+	public float streetFuel = 0.1f;
+	public float skyScraperFuel = 0.1f;
+	public float smallHouseFuel = 0.1f;
+	public float parkFuel = 0.03f;
+	public float barnFuel = 0.05f;
+	public float rowHousesFuel = 0.1f;
+	public float oozeSpreadRate = 200;
+	public float fireSpreadRate = 1.5f;
+	public int oozeLife = 3;
 	
 	
 	public Material roadNS;
@@ -65,6 +68,9 @@ public class Map : MonoBehaviour {
 				bool ewDir = false;
 				mapObjects[i,j] = Instantiate(emptyTileObject);
 				MapTile s = mapObjects[i,j].GetComponent<MapTile>();
+				s.oozeSpreadRate = oozeSpreadRate;
+				s.fireSpreadRate = fireSpreadRate;
+				s.oozeLife = oozeLife;
 				
 				Transform tileObject = null;
 				Transform burnedObject = null;

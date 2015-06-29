@@ -16,9 +16,9 @@ public class MapTile : MonoBehaviour {
 	bool onFire;
 	bool isBurned;
 	bool isOozed;
-	float fireSpreadRate = 0.5f;
+	public float fireSpreadRate = 0.5f;
 	float fireSpreadTimer = 0;
-	float oozeSpreadRate = 0.5f;
+	public float oozeSpreadRate = 0.5f;
 	float oozeSpreadTimer = 0;
 
 	public float fireFuel = 1;
@@ -128,16 +128,19 @@ public class MapTile : MonoBehaviour {
 				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 10, true);
 				GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0, false);
 				onFire = true;
+				fireFuel = 0;
 			}
 		}
 	}
 
 	//Swap to burned prefab
 	public void SetBurned(int x, int y) {
+		GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0, true);
+		GameObject.FindGameObjectWithTag("Map").GetComponent<Populate>().setProgression(x, y, 0, false);
 		currentPrefab.gameObject.SetActive(false);
 		burnedPrefab.gameObject.SetActive(true);
 		onFire = false;
-
+		isBurned = true;
 	}
 
 	//Swap to ooze prefab
