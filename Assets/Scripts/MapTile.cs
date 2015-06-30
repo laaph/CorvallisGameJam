@@ -14,8 +14,8 @@ public class MapTile : MonoBehaviour {
  
 	public int x,y;
 	bool onFire;
-	bool isBurned;
-	bool isOozed;
+	public bool isBurned;
+	public bool isOozed;
 	public float fireSpreadRate = 0.5f;
 	float fireSpreadTimer = 0;
 	public float oozeSpreadRate = 0.5f;

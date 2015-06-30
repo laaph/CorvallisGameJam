@@ -13,8 +13,10 @@ public class Map : MonoBehaviour {
 	public float rowHousesFuel = 0.1f;
 	public float oozeSpreadRate = 200;
 	public float fireSpreadRate = 1.5f;
+	public int last_ooze=0;
 	public int oozeLife = 3;
-	
+	int oozeStartTileY, oozeStartTileX;
+	int count = 0;
 	
 	public Material roadNS;
 	public Material roadEW;
@@ -49,15 +51,17 @@ public class Map : MonoBehaviour {
 	public Material burnedMat;
 	public Material fireMat;
 
-	static public int maxSize = 100;
+	static public int maxSize = 50;
 	public Transform[,] 	mapObjects	= new Transform[maxSize, maxSize];
 	
 	// Use this for initialization
 	void Start () {
-	
 		bool skipHorizRoad;
 		bool skipVertRoad;
 		skipVertRoad = false; skipHorizRoad = false;
+
+		oozeStartTileY = Random.Range(0, maxSize);
+		oozeStartTileX = Random.Range(0, maxSize);
 		
 		for(int i = 0; i < maxSize; i++) {
 		if(i % 3 == 0) {
@@ -77,6 +81,8 @@ public class Map : MonoBehaviour {
 				Transform oozeObject = null;
 				
 				bool road = false;
+
+
 									
 				if((i % 3) == 0 && (j % 3) == 0) {
 					s.type = 0;
@@ -196,6 +202,10 @@ public class Map : MonoBehaviour {
 				s.burnedPrefab   = b;
 				s.oozePrefab 	 = o;
 				s.burningPrefab  = tileObject;
+
+				if ((s.x == oozeStartTileX) && (s.y == oozeStartTileY)) {
+					s.Oozify(s.x, s.y);
+				}
 			}
 		}
 		
@@ -204,9 +214,52 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	if(endstate())
+	{
+			count++;
+	
+	}
+	else {
+		count =0;
+		}
+	if(count > 200)
+	{
+	print("end");
+	if(((float)(100*get_ooze_count())/(maxSize*maxSize))>50)
+	{
+		Application.LoadLevel("Lose");
+	}
+	else
+			{Application.LoadLevel("Win");}
+
+
+	}
 	}
 	
-	
+	public int get_ooze_count()
+	{
+		int ooze_count = 0;
+		for(int i = 0; i < maxSize; i++) 
+		{
+			for(int j = 0; j<maxSize; j++)
+			{
+				MapTile tile = mapObjects[i,j].GetComponent<MapTile>() as MapTile;
+				if(tile.isOozed)
+				{
+					ooze_count++;
+				}
+			}
+		}
+		return ooze_count;
+	}
+	public bool endstate()
+	{
+		int new_ooze_count=get_ooze_count();
+		int last_ooze_buffer=last_ooze;
+		last_ooze = new_ooze_count;
+		return new_ooze_count==last_ooze_buffer;
+		
+	}
 	public float randomgaussian(float mean, float stdDev)
 	{
 		//generates a random number within a gaussian distribution
