@@ -18,7 +18,7 @@ public class CameraControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -45,6 +45,7 @@ public class CameraControl : MonoBehaviour
 		//Move down
 		if (Input.mousePosition.y < borderMargin) {
 			transform.Translate (0, 0, -movementSpeed, Space.World);
+			
 		}
 		
 		if(gameActionOn) {

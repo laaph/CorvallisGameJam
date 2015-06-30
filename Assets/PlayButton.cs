@@ -5,7 +5,7 @@ public class PlayButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+//		Application.LoadLevel("JonathanScene");
 	}
 	
 	// Update is called once per frame
